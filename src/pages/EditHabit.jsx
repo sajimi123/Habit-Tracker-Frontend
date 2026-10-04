@@ -19,7 +19,7 @@ function EditHabit() {
   const getHabit = async () => {
     try {
       const response = await axios.get(
-        `https://habit-tracker-backend-lt76.onrender.com//habit/${id}`
+        `https://habit-tracker-backend-lt76.onrender.com/habit/${id}`
       )
 
       setHabit(response.data)
@@ -44,7 +44,7 @@ function EditHabit() {
 
     try {
       await axios.patch(
-        `https://habit-tracker-backend-lt76.onrender.com//${id}`,
+        `https://habit-tracker-backend-lt76.onrender.com/${id}`,
         habit
       )
 

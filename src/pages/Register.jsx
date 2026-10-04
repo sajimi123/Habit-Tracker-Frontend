@@ -33,7 +33,7 @@ function Register() {
     try {
 
       const response = await axios.get(
-        `https://habit-tracker-backend-lt76.onrender.com//users?email=${user.email}`
+        `https://habit-tracker-backend-lt76.onrender.com/users?email=${user.email}`
       )
 
       if (response.data.length > 0) {
@@ -42,7 +42,7 @@ function Register() {
       }
 
       await axios.post(
-        'https://habit-tracker-backend-lt76.onrender.com//users',
+        'https://habit-tracker-backend-lt76.onrender.com/users',
         user
       )
 

@@ -61,7 +61,7 @@ function AddHabit() {
     }
 
     await axios.post(
-      'https://habit-tracker-backend-lt76.onrender.com//habit',
+      'https://habit-tracker-backend-lt76.onrender.com/habit',
       newHabit
     )
 

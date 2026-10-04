@@ -27,7 +27,7 @@ const { darkMode } = useContext(ThemeContext)
       }
 
       const response = await axios.get(
-        `https://habit-tracker-backend-lt76.onrender.com//habit?userId=${loggedUser.id}`
+        `https://habit-tracker-backend-lt76.onrender.com/habit?userId=${loggedUser.id}`
       )
 
       setHabits(response.data)
@@ -47,7 +47,7 @@ const { darkMode } = useContext(ThemeContext)
   const deleteHabit = async (id) => {
 
     await axios.delete(
-      `https://habit-tracker-backend-lt76.onrender.com//habit/${id}`
+      `https://habit-tracker-backend-lt76.onrender.com/habit/${id}`
     )
 
     getHabits()
@@ -68,7 +68,7 @@ const { darkMode } = useContext(ThemeContext)
     ]
 
     await axios.patch(
-      `https://habit-tracker-backend-lt76.onrender.com//habit/${habit.id}`,
+      `https://habit-tracker-backend-lt76.onrender.com/habit/${habit.id}`,
       {
         completionDates: updatedDates
       }

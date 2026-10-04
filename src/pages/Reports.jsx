@@ -20,7 +20,7 @@ function Reports() {
       }
 
       const response = await axios.get(
-        `https://habit-tracker-backend-lt76.onrender.com//habit?userId=${loggedUser.id}`
+        `https://habit-tracker-backend-lt76.onrender.com/habit?userId=${loggedUser.id}`
       )
 
       setHabits(response.data)

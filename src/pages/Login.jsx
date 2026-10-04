@@ -32,7 +32,7 @@ function Login() {
     try {
 
       const response = await axios.get(
-        `https://habit-tracker-backend-lt76.onrender.com//users?email=${loginData.email}&password=${loginData.password}`
+        `https://habit-tracker-backend-lt76.onrender.com/users?email=${loginData.email}&password=${loginData.password}`
       )
 
       if (response.data.length === 0) {
