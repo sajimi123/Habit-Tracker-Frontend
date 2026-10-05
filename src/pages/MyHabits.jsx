@@ -1,5 +1,9 @@
 import React, { useEffect, useState ,useContext} from 'react'
-import axios from 'axios'
+import {
+  getAllHabitsAPI,
+  deleteHabitAPI,
+  completeHabitAPI
+} from '../services/apiServices'
 import { Link } from 'react-router-dom'
 import { ThemeContext } from '../context/ThemeContext'
 
@@ -26,11 +30,9 @@ const { darkMode } = useContext(ThemeContext)
         return
       }
 
-      const response = await axios.get(
-        `https://habit-tracker-backend-lt76.onrender.com/habit?userId=${loggedUser.id}`
-      )
+    const response = await getAllHabitsAPI(loggedUser.id)
 
-      setHabits(response.data)
+setHabits(response.data)
 
     } catch (error) {
 
@@ -46,9 +48,7 @@ const { darkMode } = useContext(ThemeContext)
 
   const deleteHabit = async (id) => {
 
-    await axios.delete(
-      `https://habit-tracker-backend-lt76.onrender.com/habit/${id}`
-    )
+   await deleteHabitAPI(id)
 
     getHabits()
   }
@@ -67,12 +67,7 @@ const { darkMode } = useContext(ThemeContext)
       today
     ]
 
-    await axios.patch(
-      `https://habit-tracker-backend-lt76.onrender.com/habit/${habit.id}`,
-      {
-        completionDates: updatedDates
-      }
-    )
+   await completeHabitAPI(habit.id, updatedDates)
 
     getHabits()
   }

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import axios from 'axios'
+import { loginUserAPI } from '../services/apiServices'
 import { Link, useNavigate } from 'react-router-dom'
 import { ThemeContext } from '../context/ThemeContext'
 
@@ -31,9 +31,10 @@ function Login() {
 
     try {
 
-      const response = await axios.get(
-        `https://habit-tracker-backend-lt76.onrender.com/users?email=${loginData.email}&password=${loginData.password}`
-      )
+     const response = await loginUserAPI(
+  loginData.email,
+  loginData.password
+)
 
       if (response.data.length === 0) {
         alert('Invalid email or password')

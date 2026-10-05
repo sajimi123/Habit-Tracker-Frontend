@@ -1,5 +1,8 @@
 import React, { useState, useContext } from 'react'
-import axios from 'axios'
+import {
+  checkUserAPI,
+  registerUserAPI
+} from '../services/apiServices'
 import { Link, useNavigate } from 'react-router-dom'
 import { ThemeContext } from '../context/ThemeContext'
 
@@ -32,19 +35,14 @@ function Register() {
 
     try {
 
-      const response = await axios.get(
-        `https://habit-tracker-backend-lt76.onrender.com/users?email=${user.email}`
-      )
+   const response = await checkUserAPI(user.email)
 
       if (response.data.length > 0) {
         alert('Email already registered')
         return
       }
 
-      await axios.post(
-        'https://habit-tracker-backend-lt76.onrender.com/users',
-        user
-      )
+      await registerUserAPI(user)
 
       alert('Registration successful')
 

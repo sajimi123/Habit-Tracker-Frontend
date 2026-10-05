@@ -1,5 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react'
-import axios from 'axios'
+import {
+  viewHabitAPI,
+  updateHabitAPI
+} from '../services/apiServices'
 import { useNavigate, useParams, Link } from 'react-router-dom'
 import { ThemeContext } from '../context/ThemeContext'
 function EditHabit() {
@@ -18,11 +21,9 @@ function EditHabit() {
 
   const getHabit = async () => {
     try {
-      const response = await axios.get(
-        `https://habit-tracker-backend-lt76.onrender.com/habit/${id}`
-      )
+     const response = await viewHabitAPI(id)
 
-      setHabit(response.data)
+setHabit(response.data)
     } catch (error) {
       console.log(error)
     }
@@ -43,10 +44,7 @@ function EditHabit() {
     e.preventDefault()
 
     try {
-      await axios.patch(
-        `https://habit-tracker-backend-lt76.onrender.com/${id}`,
-        habit
-      )
+    await updateHabitAPI(id, habit)
 
       alert('Habit updated successfully')
 

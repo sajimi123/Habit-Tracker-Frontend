@@ -1,5 +1,5 @@
 import React, { useState,useContext } from 'react'
-import axios from 'axios'
+import { addHabitAPI } from '../services/apiServices'
 import { Link } from 'react-router-dom'
 import { ThemeContext } from '../context/ThemeContext'
 
@@ -60,10 +60,7 @@ function AddHabit() {
       completionDates: []
     }
 
-    await axios.post(
-      'https://habit-tracker-backend-lt76.onrender.com/habit',
-      newHabit
-    )
+   await addHabitAPI(newHabit)
 
     alert('Habit added successfully')
 

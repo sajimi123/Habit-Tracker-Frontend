@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react'
-import axios from 'axios'
+import { getAllHabitsAPI } from '../services/apiServices'
 import jsPDF from 'jspdf'
 import { Link } from 'react-router-dom'
 import { ThemeContext } from '../context/ThemeContext'
@@ -19,11 +19,9 @@ function Reports() {
         return
       }
 
-      const response = await axios.get(
-        `https://habit-tracker-backend-lt76.onrender.com/habit?userId=${loggedUser.id}`
-      )
+   const response = await getAllHabitsAPI(loggedUser.id)
 
-      setHabits(response.data)
+setHabits(response.data)
 
     } catch (error) {
       console.log(error)
